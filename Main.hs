@@ -4,14 +4,17 @@ module Main where
 import Protolude
 import Network.IRC.Client
 
-channel = "#augsburg"
-
 main :: IO ()
-main = do
+main = ircbot
+
+ircbot :: IO ()
+ircbot = do
   conn <- connect "chat.freenode.net" 6667 3
   start (conn { _logfunc = stdoutLogger })
         $ (defaultIRCConf "stackenblocken")
             { _eventHandlers = defaultEventHandlers <> [ joinAugsburg, pingLabping ] }
+
+channel = "#augsburg"
 
 joinAugsburg = EventHandler
   { _description = "join " <> channel
