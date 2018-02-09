@@ -20,7 +20,7 @@ executable stackenblocken
   -- other-modules:       
   -- other-extensions:
   default-extensions:  NoImplicitPrelude, OverloadedStrings
-  build-depends:       base >=4.9 && <4.10
+  build-depends:       base == 4.*
                      , protolude
                      , irc-client
                      , containers
